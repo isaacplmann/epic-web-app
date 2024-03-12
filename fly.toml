@@ -1,4 +1,4 @@
-app = "epic-stack-template"
+app = "epic-web-app-7d25"
 primary_region = "sjc"
 kill_signal = "SIGINT"
 kill_timeout = 5
