@@ -1,0 +1,51 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["build:remix", "build:server"]
+    },
+    "build:icons": {
+      "inputs": [
+        "{projectRoot}/other/build-icons.ts",
+        "{projectRoot}/other/svg-icons/*"
+      ],
+      "outputs": ["{projectRoot}/app/components/ui/icons"],
+      "cache": true
+    },
+    "build:remix": {
+      "dependsOn": ["build:icons"],
+      "inputs": ["{projectRoot}/vite.config.ts", "{projectRoot}/app/**/*"],
+      "outputs": ["{projectRoot}/build"],
+      "cache": true
+    },
+    "build:server": {
+      "inputs": [
+        "{projectRoot}/other/build-server",
+        "{projectRoot}/server/**/*"
+      ],
+      "outputs": ["{projectRoot}/server-build"],
+      "cache": true
+    },
+    "test:e2e:run": {
+      "cache": true
+    },
+    "lint": {
+      "cache": true
+    },
+    "coverage": {
+      "cache": true
+    },
+    "typecheck": {
+      "cache": true
+    }
+  },
+  "defaultBase": "main",
+  "plugins": [
+    {
+      "plugin": "@nx/playwright/plugin",
+      "options": {
+        "targetName": "e2e"
+      }
+    }
+  ]
+}
