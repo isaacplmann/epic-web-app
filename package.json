@@ -7,7 +7,7 @@
     "#*": "./*"
   },
   "scripts": {
-    "build": "nx exec -- echo 'Build complete'",
+    "build": "run-s build:*",
     "build:remix": "nx exec -- remix vite:build --sourcemapClient",
     "build:icons": "nx exec -- tsx ./other/build-icons.ts",
     "build:server": "nx exec -- tsx ./other/build-server.ts",
